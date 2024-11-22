@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "genie.biome111.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ExampleMixin",
+		"client/CustomBiomePatternBiomeAccessMixin",
+		"CustomTemperaturePatternOctaveSimplexNoiseSampler"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
