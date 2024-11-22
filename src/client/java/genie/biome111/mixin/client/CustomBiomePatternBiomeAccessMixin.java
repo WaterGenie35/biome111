@@ -48,12 +48,14 @@ public abstract class CustomBiomePatternBiomeAccessMixin {
         int index = Math.floorMod((int)Math.floor(pos.getX() / scale), biomePattern.length);
         String biomeString = biomePattern[index];
 
-        MinecraftClient client = MinecraftClient.getInstance();
-        DynamicRegistryManager registryManager = client.world.getRegistryManager();
-        Optional<RegistryEntry.Reference<Biome>> biome_reference = registryManager.getOrThrow(RegistryKeys.BIOME).getEntry(Identifier.ofVanilla(biomeString));
-        if (biome_reference.isPresent()) {
-            cir.setReturnValue(biome_reference.get());
-        }
+        try {
+            MinecraftClient client = MinecraftClient.getInstance();
+            DynamicRegistryManager registryManager = client.world.getRegistryManager();
+            Optional<RegistryEntry.Reference<Biome>> biome_reference = registryManager.getOrThrow(RegistryKeys.BIOME).getEntry(Identifier.ofVanilla(biomeString));
+            if (biome_reference.isPresent()) {
+                cir.setReturnValue(biome_reference.get());
+            }
+        } finally {}
     }
 
 }
