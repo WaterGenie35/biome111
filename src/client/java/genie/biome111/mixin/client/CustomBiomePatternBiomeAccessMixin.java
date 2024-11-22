@@ -44,7 +44,8 @@ public abstract class CustomBiomePatternBiomeAccessMixin {
             "jungle",
             "mushroom_fields"
         };
-        int index = Math.floorMod(pos.getX(), biomePattern.length);
+        double scale = 2.0;
+        int index = Math.floorMod((int)Math.floor(pos.getX() / scale), biomePattern.length);
         String biomeString = biomePattern[index];
 
         MinecraftClient client = MinecraftClient.getInstance();

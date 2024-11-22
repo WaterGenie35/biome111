@@ -14,7 +14,8 @@ public abstract class CustomTemperaturePatternOctaveSimplexNoiseSampler {
     public void sampleCustomTemperaturePattern(double x, double y, boolean useOrigin, CallbackInfoReturnable<Double> cir) {
         // Undo the scaling
         int originalX = (int)(x / 0.0225);
-        int index = Math.floorMod(originalX, 20);
+        double scale = 2.0;
+        int index = Math.floorMod((int)Math.floor(originalX / scale), 20);
         if (index == 0) {
             // Anything strictly less than -0.1
             cir.setReturnValue(-0.2);
